@@ -40,4 +40,4 @@ select ANS in "Yes" "No" "Later"; do
     esac
 done
 
-echo "Thanks for the sweep!"
+echo "Done sweeping!"
