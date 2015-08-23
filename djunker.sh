@@ -4,6 +4,11 @@ echo Hello $USER
 # The target file
 FILE=
 
+# Target sweep directory
+# TODO: Don't hard-code this directory. Search "smartly"
+DIRNAME=Downloads
+DIRPATH=~/Downloads/
+
 # Generate a random bit
 RAND=$(gshuf -i0-1 -n1)
 
@@ -11,7 +16,7 @@ RAND=$(gshuf -i0-1 -n1)
 
 if [ $RAND = 0 ]; then
     echo "Here's a RANDOM file. Do you want to delete it?"
-    FILE=$(ls ~/Downloads | gshuf -n 1)
+    FILE=$(ls $DIRPATH | gshuf -n 1)
 else
     echo "Here's a really OLD file! Do you want to delete it?"
     cd ../../Downloads
@@ -23,6 +28,10 @@ echo $FILE
 
 select ANS in "Yes" "No" "Later"; do
     case $ANS in
-        Yes )
+        Yes ) echo "You said YES"; break;;
+        No ) echo "You said NO"; break;;
+        Later ) echo "You said LATER"; break;;
+    esac
+done
 
-
+echo "Thanks for the sweep!"
