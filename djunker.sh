@@ -7,7 +7,10 @@ FILE=
 # Target sweep directory
 # TODO: Don't hard-code this directory. Search "smartly"
 DIRNAME=Downloads
-DIRPATH=~/Downloads/
+DIRPATH=~/Downloads
+
+# Trash directory
+TRASH=~/.Trash
 
 # Generate a random bit
 RAND=$(gshuf -i0-1 -n1)
@@ -28,8 +31,11 @@ echo $FILE
 
 select ANS in "Yes" "No" "Later"; do
     case $ANS in
-        Yes ) echo "You said YES"; break;;
-        No ) echo "You said NO"; break;;
+        Yes )
+        echo "Okay! It's now in Trash :-) ";
+        mv $DIRPATH/$FILE $TRASH;
+        break;;
+        No ) echo "Okay, we're keeping the file!"; break;;
         Later ) echo "You said LATER"; break;;
     esac
 done
